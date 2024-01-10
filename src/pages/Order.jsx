@@ -1,12 +1,11 @@
-
 import axios from "axios";
 import { useEffect } from "react";
 
+import store from "../contexts/store";
 import Header from "../components/layouts/Header";
-import Loading from "../components/Loading";
+import ProductListLoading from "../components/ProductListLoading";
 import ProductList from "../components/ProductList";
 import Basket from "../components/Basket";
-import store from "../contexts/store";
 
 function Order(){
   const {isProducts, setIsProducts} = store.useProduct();
@@ -22,7 +21,7 @@ function Order(){
       <Header />
       {isProducts
         ? <ProductList />
-        : <Loading />
+        : <ProductListLoading />
       }
       <Basket />
     </>

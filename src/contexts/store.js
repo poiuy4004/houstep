@@ -7,7 +7,9 @@ const store = {
   })),
   useTotal: create(set=>({
     isTotalQuantity: 0,
-    setIsTotalQuantity: quantity=>set(state=>({isTotalQuantity: state.isQuantity+quantity}))
-  }))
+    setIsTotalQuantity: quantity=>set(state=>({isTotalQuantity: state.isTotalQuantity+quantity})),
+    isTotalValue: 0,
+    setIsTotalValue: value=>set(state=>({isTotalValue: state.isTotalValue+value}))
+  })),
 }
 export default store;

@@ -1,5 +1,4 @@
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import store from "../contexts/store";
@@ -14,7 +13,7 @@ const Container = styled.li`
   align-items: center;
   border: solid 1px #0000004D;
   border-radius: 10px;
-  ${props=>props.isQuantity? "background-color: #F75A2F1A;" : null}
+  ${props=>props.className>0? "background-color: #F75A2F1A" : "background-color: transparent"};
 `
 const ImageBox = styled.div`
   height: 62px;
@@ -23,6 +22,7 @@ const ImageBox = styled.div`
 `
 const Box = styled.div`
   height: 100%;
+  margin-left: 8px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -50,14 +50,31 @@ const QuantityBox = styled.div`
 
 function Product({product}){
   const [isQuantity, setIsQuantity] = useState(0);
-  const {isTotalQuantity,setIsTotalQuantity} = store.useTotal();
+  const {setIsTotalQuantity,setIsTotalValue} = store.useTotal();
 
-  useEffect(()=>{
-    setIsTotalQuantity(isQuantity);
-  },[isQuantity])
-console.log(isTotalQuantity)
+  function handleDownButton(){
+    if(isQuantity-1<0){
+      setIsQuantity(0)
+    }
+    else{
+      setIsQuantity(prev=>prev-1)
+      setIsTotalQuantity(-1)
+      setIsTotalValue(-(product.price))
+    }
+  }
+  function handleUpButton(){
+    if(isQuantity+1>99){
+      setIsQuantity(99)
+    }
+    else{
+      setIsQuantity(prev=>prev+1)
+      setIsTotalQuantity(+1)
+      setIsTotalValue(product.price)
+    }
+  }
+
   return(
-    <Container isQuantity={isQuantity}>
+    <Container className={isQuantity}>
       <ImageBox></ImageBox>
       <Box>
         <NameBox>
@@ -66,10 +83,11 @@ console.log(isTotalQuantity)
         </NameBox>
         <PriceBox>
           <QuantityBox>
-            <button onClick={()=>setIsQuantity(prev=>prev-1<0? 0 : prev-1)}>-</button>
+            <button onClick={handleDownButton}>-</button>
             <div>{isQuantity}</div>
-            <button onClick={()=>setIsQuantity(prev=>prev+1)}>+</button></QuantityBox>
-          <div>{product.price.toLocaleString()}원</div>
+            <button onClick={handleUpButton}>+</button>
+          </QuantityBox>
+          <div>{product.price}원</div>
         </PriceBox>
       </Box>
     </Container>

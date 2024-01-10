@@ -1,8 +1,6 @@
-
 import styled from "styled-components";
 
 import store from "../contexts/store";
-
 import Product from "./Product";
 
 const Container = styled.ul`
@@ -20,7 +18,7 @@ function ProductList(){
   return(
     <Container>
       {isProducts.map(product=>(
-        <Product product={product} />
+        <Product product={product} key={product.id} />
       ))}
     </Container>
   )
