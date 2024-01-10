@@ -48,8 +48,8 @@ function Basket(){
   const navigate = useNavigate();
 
   function handleOrder(){
-    setOrderBefore(false)
     if(isTotalQuantity){
+      setOrderBefore(false);
       axios.post('http://localhost:3001/결제페이지',{
         isTotalQuantity: isTotalQuantity,
         isTotalValue: isTotalValue,
@@ -59,7 +59,7 @@ function Basket(){
         ? navigate("/complete")
         : navigate("/error")
       })
-      .catch(err=>navigate("/error"))
+      .catch(err=>navigate("/error"));
     }
   }
 

@@ -4,7 +4,7 @@ import store from "../contexts/store";
 import Product from "./Product";
 
 const Container = styled.ul`
-  padding: 18px;
+  padding: 18px 0;
   display: flex;
   flex-direction: column;
   row-gap: 18px;

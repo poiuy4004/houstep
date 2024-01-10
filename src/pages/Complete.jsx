@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as CheckFilled } from "../assets/CheckFilled.svg";
+
+import store from "../contexts/store";
 
 const Container = styled.article`
   position: fixed;
@@ -20,6 +24,16 @@ const Container = styled.article`
 `
 
 function Complete(){
+  const {isTotalQuantity, setIsTotalQuantity, isTotalValue, setIsTotalValue} = store.useTotal();
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    setIsTotalQuantity(-isTotalQuantity);
+    setIsTotalValue(-isTotalValue);
+    setTimeout(()=>navigate("/order"),3000);
+  },[])
+
     return(
       <Container>
         <CheckFilled />

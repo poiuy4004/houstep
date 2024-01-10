@@ -54,22 +54,22 @@ function Product({product}){
 
   function handleDownButton(){
     if(isQuantity-1<0){
-      setIsQuantity(0)
+      setIsQuantity(0);
     }
     else{
-      setIsQuantity(prev=>prev-1)
-      setIsTotalQuantity(-1)
-      setIsTotalValue(-(product.price))
+      setIsQuantity(prev=>prev-1);
+      setIsTotalQuantity(-1);
+      setIsTotalValue(-(product.price));
     }
   }
   function handleUpButton(){
-    if(isQuantity+1>99){
-      setIsQuantity(99)
+    if(isQuantity+1>999){
+      setIsQuantity(999);
     }
     else{
-      setIsQuantity(prev=>prev+1)
-      setIsTotalQuantity(+1)
-      setIsTotalValue(product.price)
+      setIsQuantity(prev=>prev+1);
+      setIsTotalQuantity(+1);
+      setIsTotalValue(product.price);
     }
   }
 

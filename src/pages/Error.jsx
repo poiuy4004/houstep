@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import store from "../contexts/store";
 
 const Container = styled.article`
   position: fixed;
@@ -16,6 +20,16 @@ const Container = styled.article`
 `
 
 function Error(){
+  const {isTotalQuantity, setIsTotalQuantity, isTotalValue, setIsTotalValue} = store.useTotal();
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    setIsTotalQuantity(-isTotalQuantity);
+    setIsTotalValue(-isTotalValue);
+    setTimeout(()=>navigate("/order"),3000);
+  },[])
+
   return(
     <Container>
       <div>
