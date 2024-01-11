@@ -35,8 +35,6 @@ const OrderButton = styled.button`
   border: none;
   color: #FFFFFF;
   font-size: 18px;
-  font-weight: 400;
-  line-height: 21.78px;
   ${props=>props.className>0
   ? "background-color: #000000; cursor: pointer;"
   : "background-color: #C1C1C1; cursor: auto;"}

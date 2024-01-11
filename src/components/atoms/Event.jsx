@@ -10,7 +10,7 @@ const Container = styled.div`
   border-radius: 10px;
   background-color: #F75A2F;
   color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto";
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;

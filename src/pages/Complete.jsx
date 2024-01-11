@@ -15,9 +15,6 @@ const Container = styled.article`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21.78px;
   &>:first-child{
     margin-bottom: 12px;
   }

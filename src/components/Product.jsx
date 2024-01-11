@@ -40,11 +40,8 @@ const QuantityBox = styled.div`
   align-items: center;
   &>*{
     height: 22px;
-    width: 19px;
+    min-width: 19px;
     text-align: center;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 21.78px;
   }
 `
 
@@ -87,7 +84,7 @@ function Product({product}){
             <div>{isQuantity}</div>
             <button onClick={handleUpButton}>+</button>
           </QuantityBox>
-          <div>{product.price}원</div>
+          <div>{(product.price).toLocaleString("ko-KR")}원</div>
         </PriceBox>
       </Box>
     </Container>
